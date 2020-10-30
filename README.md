@@ -11,6 +11,8 @@ Parameters:</br>
 &nbsp;&nbsp;(\<operation\> can either be be "open" or "send", mandatory)</br>
 -s \<command\> or --send=\<command\></br>
 &nbsp;&nbsp;(\<command\> to be sent via the \<port\>, mandatory if \<operation\> = "send")</br>
+-h --help</br>
+&nbsp;&nbsp;(to get the above usage information)
 
 You can use it for example to control [CPP1 evaluation kits](https://www.jobst-technologies.com/products/microfluidics/peristaltic-micropumps/#Evaluation_Kits) out of your own program.
 For possible commands, see its [manual](https://www.jobst-technologies.com/wp-content/uploads/manual._cpp1_evakit_e2.3.0.pdf).
