@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Release"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="COMConnector.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="148"/>
+        <CursorPos X="64" Y="169"/>
+        <UsageCount Value="28"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\packages\fcl-registry\src\registry.pp"/>
+        <UnitName Value="Registry"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="25"/>
+        <CursorPos X="3" Y="42"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="655"/>
+        <CursorPos X="14" Y="672"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="C:\Users\stoehr\AppData\Local\lazarus\onlinepackagemanager\packages\synapse40.1\synaser.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="869"/>
+        <CursorPos Y="886"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="167" TopLine="157"/>
+      </Position1>
+      <Position2>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="208" TopLine="176"/>
+      </Position2>
+      <Position3>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="96" TopLine="87"/>
+      </Position3>
+      <Position4>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="99" TopLine="96"/>
+      </Position4>
+      <Position5>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="123" TopLine="123"/>
+      </Position5>
+      <Position6>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="136" TopLine="123"/>
+      </Position6>
+      <Position7>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="137" TopLine="123"/>
+      </Position7>
+      <Position8>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="138" TopLine="123"/>
+      </Position8>
+      <Position9>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="139" TopLine="123"/>
+      </Position9>
+      <Position10>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="140" Column="23" TopLine="126"/>
+      </Position10>
+      <Position11>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="103" TopLine="86"/>
+      </Position11>
+      <Position12>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="134" TopLine="126"/>
+      </Position12>
+      <Position13>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="140" TopLine="126"/>
+      </Position13>
+      <Position14>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="142" TopLine="129"/>
+      </Position14>
+      <Position15>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="148" TopLine="129"/>
+      </Position15>
+      <Position16>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="149" TopLine="132"/>
+      </Position16>
+      <Position17>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="150" TopLine="132"/>
+      </Position17>
+      <Position18>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="82" Column="54" TopLine="64"/>
+      </Position18>
+      <Position19>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="166" TopLine="146"/>
+      </Position19>
+      <Position20>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="167" TopLine="146"/>
+      </Position20>
+      <Position21>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="168" TopLine="146"/>
+      </Position21>
+      <Position22>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="67" Column="59" TopLine="47"/>
+      </Position22>
+      <Position23>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="78" Column="64" TopLine="106"/>
+      </Position23>
+      <Position24>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="111" TopLine="105"/>
+      </Position24>
+      <Position25>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="142" TopLine="142"/>
+      </Position25>
+      <Position26>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="144" TopLine="138"/>
+      </Position26>
+      <Position27>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="142" TopLine="141"/>
+      </Position27>
+      <Position28>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="166" Column="19" TopLine="145"/>
+      </Position28>
+      <Position29>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="174" TopLine="146"/>
+      </Position29>
+      <Position30>
+        <Filename Value="COMConnector.lpr"/>
+        <Caret Line="175" TopLine="147"/>
+      </Position30>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="4" ActiveMode="CandOandS">
+        <Mode0 Name="default"/>
+        <Mode1 Name="onlyC">
+          <local>
+            <CommandLineParams Value="-c 3"/>
+          </local>
+        </Mode1>
+        <Mode2 Name="CandO">
+          <local>
+            <CommandLineParams Value="-c 3 -o open"/>
+          </local>
+        </Mode2>
+        <Mode3 Name="CandOandS">
+          <local>
+            <CommandLineParams Value="-c 3 -o send -s /0gLS1999I1M5000l0lR"/>
+          </local>
+        </Mode3>
+      </Modes>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="3">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="COMConnector.lpr"/>
+        <Line Value="111"/>
+      </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="COMConnector.lpr"/>
+        <Line Value="173"/>
+      </Item2>
+      <Item3>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="COMConnector.lpr"/>
+        <Line Value="142"/>
+      </Item3>
+    </BreakPoints>
+    <Watches Count="3">
+      <Item1>
+        <Expression Value="Operation"/>
+      </Item1>
+      <Item2>
+        <Expression Value="COMPorts"/>
+      </Item2>
+      <Item3>
+        <Expression Value="COMPorts[1]"/>
+      </Item3>
+    </Watches>
+  </Debugging>
+</CONFIG>
