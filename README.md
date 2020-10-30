@@ -1,4 +1,4 @@
-# JT-COM-Connector
+# JT COM Connector
 Command line program to open a serial USB connection and to send commands
 
 **Usage:**</br>
