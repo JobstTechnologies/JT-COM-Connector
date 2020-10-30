@@ -6,7 +6,7 @@ uses
   {$IFDEF UNIX}{$IFDEF UseCThreads}
   cthreads,
   {$ENDIF}{$ENDIF}
-  Interfaces, Classes, SysUtils, CustApp, Registry, LazSerial, SynaSer;
+  Classes, SysUtils, CustApp, Registry, SynaSer;
 
 type
 
@@ -54,7 +54,7 @@ begin
 
  if not HasOption('o', 'operation') then
  begin
-  writeln('You must specify an oparation using the option "-o" or "--operation"');
+  writeln('You must specify an oparation using the option "-o" or "--operation".');
   Terminate;
   exit;
  end
@@ -72,7 +72,7 @@ begin
 
  if (Operation = 'send') and (not HasOption('s', 'send')) then
  begin
-  writeln('You must specify a command to be sent using the option "-s" or "--send"');
+  writeln('You must specify a command to be sent using the option "-s" or "--send".');
   Terminate;
   exit;
  end
@@ -135,7 +135,8 @@ try
   exit;
  end;
   // output connected port
-  writeln('Connection to port COM' + COMPort + ' could sucessfully be established');
+  writeln('Connection to port COM' + COMPort + ' could sucessfully be established.'
+    + LineEnding);
  end; // end if send
 
  // send a command
@@ -166,7 +167,8 @@ try
   exit;
  end;
   // output success
-  writeln('The command ' + command + 'was sucessfully sent to port COM' + COMPort);
+  writeln('The command ' + command + 'was sucessfully sent to port COM'
+   + COMPort + '.' + LineEnding);
  end; // end if open
 
 finally //free StringList
@@ -193,10 +195,13 @@ begin
   { add your help code here }
   writeln('Usage: ', ExeName, ' [-h] -c -o [-s]');
   writeln('Parameters:');
-  writeln('-c <number> or --COM=<number> (mandatory)');
-  writeln('-o <operation> or --COM=<operation> ; operation can either be "(mandatory)');
-  writeln(' operation can either be "open" or "send"');
-  writeln('-s <command> or --send=<command> (mandatory, if operation = "send")');
+  writeln('-c <port> or --COM=<port>');
+  writeln(' (<port> is the number of the COM port, mandatory)');
+  writeln('-o <operation> or --COM=<operation>');
+  writeln(' (<operation> can either be "open" or "send", mandatory)');
+  writeln('-s <command> or --send=<command>');
+  writeln(' (<command> to be sent via the <port>, mandatory if <operation> = "send")');
+  writeln('');
 end;
 
 procedure TCOMConnector.WriteSerError(ser: TBlockSerial; COMPort: string);
@@ -211,7 +216,7 @@ var
 
 begin
   Application:= TCOMConnector.Create(nil);
-  Application.Title:='COMConnector';
+  Application.Title:='JT COM Connector';
   Application.Run;
   Application.Free;
 end.

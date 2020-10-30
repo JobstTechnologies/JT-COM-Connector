@@ -10,7 +10,7 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="COMConnector"/>
+      <Title Value="JT COM Connector"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -89,13 +89,10 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="1">
       <Item1>
         <PackageName Value="laz_synapse"/>
       </Item1>
-      <Item2>
-        <PackageName Value="LazSerialPort"/>
-      </Item2>
     </RequiredPackages>
     <Units Count="1">
       <Unit0>
