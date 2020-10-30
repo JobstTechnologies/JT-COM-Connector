@@ -1,7 +1,8 @@
 # JT COM Connector
 Command line program to open a serial USB connection and to send commands
 
-**Usage:**</br>
+# Usage
+
 COMConnector.exe [-h] -c -o [-s]
 Parameters:</br>
 -c \<port\> or --COM=\<port\></br>
@@ -13,3 +14,11 @@ Parameters:</br>
 
 You can use it for example to control [CPP1 evaluation kits](https://www.jobst-technologies.com/products/microfluidics/peristaltic-micropumps/#Evaluation_Kits) out of your own program.
 For possible commands, see its [manual](https://www.jobst-technologies.com/wp-content/uploads/manual._cpp1_evakit_e2.3.0.pdf).
+
+# Compilation
+
+- Install the [**Lazarus** IDE](https://www.lazarus-ide.org/).
+- Only for the first run of Lazarus:
+  - Open the menu *Package → Online Package Manager* and install there the package **Synapse**.
+- Open the file *COMConnector.lpi* in Lazarus.
+- Build the Lazarus project or run it.
