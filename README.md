@@ -3,10 +3,20 @@ Command line program to open a serial USB connection and to send commands
 
 # Usage
 
-COMConnector.exe [-h] -c -o [-s]
+COMConnector.exe -c [-r] -o [-s] [-h]</br>
 Parameters:</br>
 -c \<port\> or --COM=\<port\></br>
 &nbsp;&nbsp;(\<port\> is the number of the COM port, mandatory)</br>
+-r <rate> or --rate=<rate></br>
+&nbsp;&nbsp;(optional, if not specified this \<rate\> will be used: "9600,8,N,SB1,False,False"</br>
+&nbsp;&nbsp;(\<rate\> = \<baud rate\>,\<bit rate\>,\<parity\>,\<stop\>,\<softflow\>,\<hardflow\>:)</br>
+&nbsp;&nbsp;(\<baud rate\> number between 50 and 4000000)</br>
+&nbsp;&nbsp;(\<bit rate\> number)</br>
+&nbsp;&nbsp;(\<parity\> communication parity character, either</br>
+&nbsp;&nbsp;&nbsp;"N" (None), "O" (Odd), "E" (Even), "M" (Mark) or "S" (Space))</br>
+&nbsp;&nbsp;(\<stop\> number of stop bits, either "SB1", "SB1andHalf" or "SB2")</br>
+&nbsp;&nbsp;(\<softflow\> if XON/XOFF handshake, either "True" or "False")</br>
+&nbsp;&nbsp;(\<hardflow\> if CTS/RTS handshake, either "True" or "False"</br> 
 -o \<operation\> or --COM=\<operation\></br>
 &nbsp;&nbsp;(\<operation\> can either be be "open" or "send", mandatory)</br>
 -s \<command\> or --send=\<command\></br>
