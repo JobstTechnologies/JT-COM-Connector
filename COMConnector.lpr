@@ -27,11 +27,14 @@ type
 
 procedure TCOMConnector.DoRun;
 var
- command, COMPort, Operation : string;
+ command, COMPort, Operation, RateString, DeviceEcho : string;
  Reg : TRegistry;
  COMPorts : TStringList;
  ser : TBlockSerial;
- i : integer;
+ i, baud, bits, stop : integer;
+ HasRate, softflow, hardflow : boolean;
+ RateArray : TStringArray;
+ parity : char;
 begin
 
  // parse parameters
@@ -51,6 +54,79 @@ begin
  begin
   COMPort:= GetOptionValue('c', 'COM');
  end;
+
+ if HasOption('r', 'rate') then
+ begin
+  RateString:= GetOptionValue('r', 'rate');
+  // if string does not contain any comma
+  if Pos(RateString, ',') = -1 then
+  begin
+   writeln('The rate must be a list separatey by ",". Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  // read the different values out of string
+  RateArray:= RateString.Split(',');
+  try
+   baud:= StrToInt(RateArray[0]);
+  except
+   writeln('The baud rate must be a number. Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  if (baud < 50) or (baud > 4e6) then
+  begin
+   writeln('The baud rate must be a number between 50 and 4000000. Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  try
+   bits:= StrToInt(RateArray[1]);
+  except
+   writeln('The bit rate must be a number. Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  if (RateArray[2][1] <> 'N') and (RateArray[2][1] <> 'O')
+   and (RateArray[2][1] <> 'E') and (RateArray[2][1] <> 'M')
+   and (RateArray[2][1] <> 'S') then
+  begin
+   writeln('The parity must either be "N", "O", "E", "M" or "S". Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  parity:= RateArray[2][1];
+  if (RateArray[3] <> 'SB1') and (RateArray[3] <> 'SB1andHalf')
+   and (RateArray[3] <> 'SB2') then
+  begin
+   writeln('Stop bits must either be "SB1", "SB1andHalf" or "SB2" a number. Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  if (RateArray[3] = 'SB1') then
+   stop:= 0
+  else if (RateArray[3] = 'SB1andHalf') then
+   stop:= 1
+  else if (RateArray[3] = 'SB3') then
+   stop:= 2;
+  try
+   softflow:= StrToBool(RateArray[4]);
+  except
+   writeln('Softflow must be "True" or "False". Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  try
+   hardflow:= StrToBool(RateArray[5]);
+  except
+   writeln('Hardflow must be "True" or "False". Check your "-r" or "--rate" parameter.');
+   Terminate;
+   exit;
+  end;
+  HasRate:= True;
+ end
+ else
+  HasRate:= False;
 
  if not HasOption('o', 'operation') then
  begin
@@ -113,7 +189,10 @@ try
  try
   ser:= TBlockSerial.Create;
   ser.DeadlockTimeout:= 3000; //set timeout to 3 s
-  ser.config(9600, 8, 'N', SB1, False, False);
+  if HasRate = False then
+   ser.config(9600, 8, 'N', SB1, False, False)
+  else
+   ser.config(baud, bits, parity, stop, softflow, hardflow);
   ser.Connect('COM' + COMPort);
 
   if ser.LastError <> 0 then
@@ -135,8 +214,14 @@ try
   exit;
  end;
   // output connected port
-  writeln('Connection to port COM' + COMPort + ' could sucessfully be established.'
-    + LineEnding);
+  writeln('Connection to port COM' + COMPort
+          + ' could sucessfully be established.');
+  // receive output from device
+  DeviceEcho:= ser.RecvPacket(1000);
+  if DeviceEcho <> '' then
+   writeln('The device sent back: "' + DeviceEcho + '"' + LineEnding)
+  else
+   writeln(LineEnding);
  end; // end if send
 
  // send a command
@@ -145,7 +230,10 @@ try
  try
   ser:= TBlockSerial.Create;
   ser.DeadlockTimeout:= 3000; //set timeout to 3 s
-  ser.config(9600, 8, 'N', SB1, False, False);
+  if HasRate = False then
+   ser.config(9600, 8, 'N', SB1, False, False)
+  else
+   ser.config(baud, bits, parity, stop, softflow, hardflow);
   ser.Connect('COM' + COMPort);
 
   if ser.LastError <> 0 then
@@ -169,6 +257,12 @@ try
   // output success
   writeln('The command ' + command + 'was sucessfully sent to port COM'
    + COMPort + '.' + LineEnding);
+  // receive output from device
+  DeviceEcho:= ser.RecvPacket(1000);
+  if DeviceEcho <> '' then
+   writeln('The device sent back: "' + DeviceEcho + '"' + LineEnding)
+  else
+   writeln(LineEnding);
  end; // end if open
 
 finally //free StringList
@@ -193,10 +287,20 @@ end;
 procedure TCOMConnector.WriteHelp;
 begin
   { add your help code here }
-  writeln('Usage: ', ExeName, ' [-h] -c -o [-s]');
+  writeln('Usage: ', ExeName, ' -c [-r] -o [-s]');
   writeln('Parameters:');
   writeln('-c <port> or --COM=<port>');
   writeln(' (<port> is the number of the COM port, mandatory)');
+  writeln('-r <rate> or --rate=<rate>');
+  writeln(' (optional, if not specified this <rate> will be used: "9600,8,N,SB1,False,False"');
+  writeln(' (<rate> = <baud rate>,<bit rate>,<parity>,<stop>,<softflow>,<hardflow>:)');
+  writeln('  (<baud rate> number between 50 and 4000000)');
+  writeln('  (<bit rate> number)');
+  writeln('  (<parity> communication parity character, either');
+  writeln('   "N" (None), "O" (Odd), "E" (Even), "M" (Mark) or "S" (Space))');
+  writeln('  (<stop> number of stop bits, either "SB1", "SB1andHalf" or "SB2")');
+  writeln('  (<softflow> if XON/XOFF handshake, either "True" or "False")');
+  writeln('  (<hardflow> if CTS/RTS handshake, either "True" or "False"');
   writeln('-o <operation> or --COM=<operation>');
   writeln(' (<operation> can either be "open" or "send", mandatory)');
   writeln('-s <command> or --send=<command>');
