@@ -314,7 +314,7 @@ end;
 
 procedure TCOMConnector.WriteSerError(ser: TBlockSerial; COMPort: string);
 begin
-  writeln('COM' + COMPort + ' error: ' + ser.LastErrorDesc);
+  writeln('COM' + COMPort + ' error: ' + ser.LastErrorDesc + LineEnding);
 end;
 
 var
