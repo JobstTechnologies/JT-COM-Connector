@@ -205,7 +205,7 @@ try
    writeln('Connection to port COM' + COMPort
            + ' could sucessfully be established.' + LineEnding);
    // receive output from device
-   DeviceEcho:= ser.RecvPacket(1000);
+   DeviceEcho:= ser.Recvstring(1000);
    if DeviceEcho <> '' then
     writeln('The device sent back:' + LineEnding + DeviceEcho);
   end;
@@ -253,7 +253,7 @@ try
    writeln('The command "' + command + '" was sucessfully sent to port COM'
            + COMPort + '.' + LineEnding);
    // receive output from device
-   DeviceEcho:= ser.RecvPacket(1000);
+   DeviceEcho:= ser.Recvstring(1000);
    if DeviceEcho <> '' then
     writeln('The device sent back:' + LineEnding + DeviceEcho);
   end;
